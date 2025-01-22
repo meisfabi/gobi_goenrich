@@ -19,14 +19,18 @@ public class Main {
         parser.addArgument( "-maxsize").required(true).help("maxsize").metavar("<max size>").type(Integer.class);
         parser.addArgument( "-overlapout").required(false).help("maxsize").metavar("overlap_out_tsv").type(String.class);
         try {
-            Namespace res = parser.parseArgs(args);
+            //Namespace res = parser.parseArgs(args);
+            OboParser oboParser = new OboParser();
             var start = System.currentTimeMillis();
             var wholeStart = start;
+            logger.info("Starting to parse Obo File");
+            oboParser.parse("C:\\Users\\mathi\\Desktop\\gobi_projects\\goenrich\\src\\main\\input\\go.obo");
             logger.info(String.format("Time needed for parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             logger.info(String.format("Time needed for whole program: %s seconds", (System.currentTimeMillis() - wholeStart) / 1000.0));
-        } catch(ArgumentParserException e){
-            parser.printHelp();
-        } catch (Exception e) {
+        } //catch(ArgumentParserException e){
+          //  parser.printHelp();
+        //}
+        catch (Exception e) {
             logger.error("Error while executing main", e);
         }
     }
