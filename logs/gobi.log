@@ -1,0 +1,14 @@
+2025-01-23 18:37:31 [main] INFO  Main - Starting to parse Obo File
+2025-01-23 18:37:31 [main] INFO  OboParser - Starting to parse gtf file
+2025-01-23 18:37:31 [main] INFO  OboParser - GTF-File parsed
+2025-01-23 18:37:31 [main] INFO  Main - Time needed for Obo parsing: 0.649 seconds
+2025-01-23 18:37:31 [main] INFO  Main - Starting to parse Obo File
+2025-01-23 18:37:32 [main] INFO  Main - Time needed for Obo parsing: 0.787 seconds
+2025-01-23 18:37:32 [main] INFO  Main - Time needed for whole program: 1.437 seconds
+2025-01-23 18:38:33 [main] INFO  Main - Starting to parse Obo File
+2025-01-23 18:38:33 [main] INFO  OboParser - Starting to parse gtf file
+2025-01-23 18:38:34 [main] INFO  OboParser - GTF-File parsed
+2025-01-23 18:38:34 [main] INFO  Main - Time needed for Obo parsing: 0.69 seconds
+2025-01-23 18:38:34 [main] INFO  Main - Starting to parse Obo File
+2025-01-23 18:38:34 [main] INFO  Main - Time needed for Obo parsing: 0.82 seconds
+2025-01-23 18:38:34 [main] INFO  Main - Time needed for whole program: 1.511 seconds

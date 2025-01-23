@@ -24,7 +24,7 @@ public class Main {
             var start = System.currentTimeMillis();
             var wholeStart = start;
             logger.info("Starting to parse Obo File");
-            oboParser.parse(res.get("obo"));
+            oboParser.parse(res.get("obo"), res.get("root"));
             logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             logger.info("Starting to parse Obo File");
             start = System.currentTimeMillis();

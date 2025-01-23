@@ -15,7 +15,7 @@ import java.util.zip.GZIPInputStream;
 public class GoParser {
     private static final Logger logger = LoggerFactory.getLogger(GoParser.class);
     public static Map<String, Set<String>> parse(String gafFilePath) {
-        Map<String, Set<String>> geneToGo = new HashMap<>();
+        var geneToGo = new HashMap<String, Set<String>>();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
                 new GZIPInputStream(Files.newInputStream(Paths.get(gafFilePath))), StandardCharsets.UTF_8))) {
@@ -24,12 +24,12 @@ public class GoParser {
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("!")) continue;
 
-                String[] parts = line.split("\t");
+                var parts = line.split("\t");
                 if (parts.length < 5) continue;
 
-                String geneId = parts[2];
-                String qualifier = parts[3];
-                String goId = parts[4];
+                var geneId = parts[2];
+                var qualifier = parts[3];
+                var goId = parts[4];
 
                 if (!qualifier.isEmpty()) {
                     continue;

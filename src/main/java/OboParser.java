@@ -13,8 +13,10 @@ import java.util.stream.Stream;
 
 public class OboParser {
     private static final Logger logger = LoggerFactory.getLogger(OboParser.class);
+    public static String root;
     private final Map<String, Obo> obos = new HashMap<>();
-    public void parse(String inputPath){
+    public void parse(String inputPath, String r){
+        root = r;
         int errorLines = 0;
         logger.info("Starting to parse gtf file");
         Path path = Path.of(inputPath);
@@ -77,6 +79,12 @@ public class OboParser {
                 currentObo.setName(value.toString().strip());
                 break;
             case "namespace":
+                var val = value.toString().strip();
+                if(!val.equals(root)){
+                    currentObo = null;
+                    inTerm = false;
+                    return;
+                }
                 currentObo.setNamespace(value.toString().strip());
                 break;
             case "is_a":
