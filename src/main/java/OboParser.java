@@ -82,6 +82,12 @@ public class OboParser {
             case "is_a":
                 currentObo.getIsA().add(value.toString().strip());
                 break;
+            case "is_obsolete":
+                if(value.toString().strip().equals("true")){
+                    inTerm = false;
+                    currentObo = null;
+                    return;
+                }
         }
     }
 }

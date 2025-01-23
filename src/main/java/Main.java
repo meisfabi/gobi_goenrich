@@ -19,13 +19,17 @@ public class Main {
         parser.addArgument( "-maxsize").required(true).help("maxsize").metavar("<max size>").type(Integer.class);
         parser.addArgument( "-overlapout").required(false).help("maxsize").metavar("overlap_out_tsv").type(String.class);
         try {
-            //Namespace res = parser.parseArgs(args);
-            OboParser oboParser = new OboParser();
+            Namespace res = parser.parseArgs(args);
+            var oboParser = new OboParser();
             var start = System.currentTimeMillis();
             var wholeStart = start;
             logger.info("Starting to parse Obo File");
-            oboParser.parse("C:\\Users\\mathi\\Desktop\\gobi_projects\\goenrich\\src\\main\\input\\go.obo");
-            logger.info(String.format("Time needed for parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
+            oboParser.parse(res.get("obo"));
+            logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
+            logger.info("Starting to parse Obo File");
+            start = System.currentTimeMillis();
+            var go = GoParser.parse(res.get("mapping"));
+            logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             logger.info(String.format("Time needed for whole program: %s seconds", (System.currentTimeMillis() - wholeStart) / 1000.0));
         } //catch(ArgumentParserException e){
           //  parser.printHelp();

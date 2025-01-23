@@ -1,19 +1,17 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class Obo {
     private String id;
     private String name;
     private String namespace;
-    private List<String> isA = new ArrayList<>();
+    private Set<String> isA = new HashSet<>();
 
     public Obo(){
 
     }
-    public Obo(String id, String name, String namespace, List<String> isA){
+    public Obo(String id, String name, String namespace, Set<String> isA){
         this.id = id;
         this.name = name;
         this.namespace = namespace;
@@ -32,7 +30,7 @@ public class Obo {
         return namespace;
     }
 
-    public List<String> getIsA() {
+    public Set<String> getIsA() {
         return isA;
     }
 
@@ -49,7 +47,7 @@ public class Obo {
         this.namespace = namespace;
     }
 
-    public void setIsA(List<String> isA) {
+    public void setIsA(Set<String> isA) {
         this.isA = isA;
     }
 }
