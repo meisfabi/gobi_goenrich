@@ -889,3 +889,11 @@ java.util.zip.ZipException: Not in GZIP format
 2025-01-30 21:16:46 [main] INFO  parser.OboParser - GTF-File parsed
 2025-01-30 21:16:46 [main] INFO  Main - Time needed for Obo parsing: 1.248 seconds
 2025-01-30 21:16:46 [main] INFO  Main - Time needed for whole program: 1.539 seconds
+2025-01-30 21:27:46 [main] INFO  Main - Starting to parse mapping File
+2025-01-30 21:27:46 [main] INFO  Main - Time needed for Obo parsing: 0.196 seconds
+2025-01-30 21:29:24 [main] INFO  Main - Time needed for Enrich parsing: 97.5 seconds
+2025-01-30 21:29:24 [main] INFO  Main - Starting to parse Obo File
+2025-01-30 21:29:28 [main] INFO  Main - Starting to parse mapping File
+2025-01-30 21:29:28 [main] INFO  Main - Time needed for Obo parsing: 0.238 seconds
+2025-01-30 21:33:04 [main] INFO  Main - Time needed for Enrich parsing: 215.529 seconds
+2025-01-30 21:33:04 [main] INFO  Main - Starting to parse Obo File

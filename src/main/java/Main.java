@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parser.*;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
     public static void main(String[] args) {
@@ -32,7 +35,8 @@ public class Main {
             var mapping = EnsemblParser.parse(res.get("mapping"));
             logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             start = System.currentTimeMillis();
-            var enrich = EnrichParser.parse(res.get("enrich"));
+            var groundTruth = new HashSet<String>();
+            var enrich = EnrichParser.parse(res.get("enrich"), groundTruth);
             logger.info(String.format("Time needed for Enrich parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             logger.info("Starting to parse Obo File");
             start = System.currentTimeMillis();
@@ -40,7 +44,7 @@ public class Main {
             logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             var yur = TestParser.parse("C:\\Users\\mathi\\Desktop\\gobi_projects\\goenrich\\src\\main\\input\\simul_exp_go_bp_ensembl_min50_max500.enrich.out");
 
-            Analyse.compute(obos, mapping, enrich, minSize, maxSize, outputPath, yur);
+            Analyse.compute(obos, mapping, enrich, minSize, maxSize, outputPath, groundTruth, yur);
             logger.info(String.format("Time needed for whole program: %s seconds", (System.currentTimeMillis() - wholeStart) / 1000.0));
         } catch(ArgumentParserException e){
             parser.printHelp();

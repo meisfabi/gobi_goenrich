@@ -6,6 +6,7 @@ public class Obo {
     private String id;
     private String name;
     private String namespace;
+    private boolean isGroundTruth = false;
     private Set<String> isA = new HashSet<>();
     private final Set<String> children = new HashSet<>();
     private final Set<String> associatedGenes = new HashSet<>();
@@ -60,5 +61,13 @@ public class Obo {
 
     public Set<String> getNotEnrichedGenes() {
         return notEnrichedGenes;
+    }
+
+    public void setGroundTruth(boolean groundTruth) {
+        isGroundTruth = groundTruth;
+    }
+
+    public boolean isGroundTruth() {
+        return isGroundTruth;
     }
 }

@@ -12,14 +12,17 @@ import java.util.Set;
 
 public class EnrichParser {
     private static final Logger logger = LoggerFactory.getLogger(EnrichParser.class);
-    public static Map<String, Enrich> parse(String enrichFilePath) {
+    public static Map<String, Enrich> parse(String enrichFilePath, HashSet<String> significantIds) {
 
         var enrichEntries = new HashMap<String, Enrich>();
         try (BufferedReader reader = new BufferedReader(new FileReader(enrichFilePath))) {
 
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line.startsWith("#")) continue;
+                if (line.startsWith("#")){
+                    significantIds.add(line.substring(1, line.length() - 1));
+                    continue;
+                }
 
                 var parts = line.split("\t");
                 if (parts.length < 3) continue;

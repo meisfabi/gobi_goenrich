@@ -9,8 +9,8 @@ import java.util.Set;
 
 public class Analyse {
 
-    private static void computeSize(Map<String, Set<String>> mapping, Map<String, Enrich> enrichSet, Map<String, Obo> obos, int minSize, int maxSize, Map<String, Result> yur) {
-        var gos = new HashMap<String, Integer>();
+    private static HashMap<String, Integer> computeSize(Map<String, Set<String>> mapping, Map<String, Enrich> enrichSet, Map<String, Obo> obos, int minSize, int maxSize, Map<String, Result> yur) {
+        var overlapping = new HashMap<String, Integer>();
         for(var entry : obos.entrySet()){
             var goId = entry.getKey();
             var obo = entry.getValue();
@@ -20,14 +20,17 @@ public class Analyse {
                 continue;
             }
 
-            gos.put(goId, numGenes);
+            overlapping.put(goId, numGenes);
         }
 
-        var a = 2;
+        return overlapping;
     }
 
-    public static void compute(Map<String, Obo> obos, Map<String, Set<String>> mapping, Map<String, Enrich> enrichSet, int minSize, int maxSize, String output, Map<String, Result> yur) {
-        computeSize(mapping, enrichSet, obos, minSize, maxSize, yur);
-        var a = 2;
+    public static void compute(Map<String, Obo> obos, Map<String, Set<String>> mapping, Map<String, Enrich> enrichSet, int minSize, int maxSize, String output, HashSet<String> groundTruth, Map<String, Result> yur) {
+        for(var goId : groundTruth){
+            obos.get(goId).setGroundTruth(true);
+        }
+        var gurt = computeSize(mapping, enrichSet, obos, minSize, maxSize, yur);
+
     }
 }
