@@ -9,6 +9,7 @@ public class Obo {
     private Set<String> isA = new HashSet<>();
     private final Set<String> children = new HashSet<>();
     private final Set<String> associatedGenes = new HashSet<>();
+    private final Set<String> notEnrichedGenes = new HashSet<>();
 
     public Obo(){
 
@@ -55,5 +56,9 @@ public class Obo {
 
     public Set<String> getAssociatedGenes() {
         return associatedGenes;
+    }
+
+    public Set<String> getNotEnrichedGenes() {
+        return notEnrichedGenes;
     }
 }

@@ -42,7 +42,6 @@ public class OboParser {
         addChildren();
         topologicalDfsSort();
         addGenes();
-
         return obos;
     }
 
@@ -80,8 +79,11 @@ public class OboParser {
 
             if(genes != null){
                 for(var gene : genes){
-                    if(enrichMap.get(gene) != null)
+                    if(enrichMap.get(gene) != null){
                         currentObo.getAssociatedGenes().add(gene);
+                    } else{
+                        currentObo.getNotEnrichedGenes().add(gene);
+                    }
                 }
             }
 
@@ -170,7 +172,6 @@ public class OboParser {
             var goId = obo.getKey();
             if(!visited.contains(goId)){
                 dfs(obo.getValue());
-
             }
         }
 
@@ -178,12 +179,14 @@ public class OboParser {
     }
 
     private static void addGenes(){
-        for (var  child : sorted) {
+        for (var child : sorted) {
             var childGenes = child.getAssociatedGenes();
+            var childNotOverlappingGenes = child.getNotEnrichedGenes();
             for (var parentId : child.getIsA()) {
                 var parent = obos.get(parentId);
                 if (parent != null) {
                     parent.getAssociatedGenes().addAll(childGenes);
+                    parent.getNotEnrichedGenes().addAll(childNotOverlappingGenes);
                 }
             }
         }
