@@ -7,6 +7,8 @@ public class Obo {
     private String name;
     private String namespace;
     private Set<String> isA = new HashSet<>();
+    private final Set<String> children = new HashSet<>();
+    private final Set<String> associatedGenes = new HashSet<>();
 
     public Obo(){
 
@@ -47,7 +49,11 @@ public class Obo {
         this.namespace = namespace;
     }
 
-    public void setIsA(Set<String> isA) {
-        this.isA = isA;
+    public Set<String> getChildren() {
+        return children;
+    }
+
+    public Set<String> getAssociatedGenes() {
+        return associatedGenes;
     }
 }

@@ -1,9 +1,14 @@
+import model.Enrich;
 import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
 import net.sourceforge.argparse4j.inf.Namespace;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import parser.EnrichParser;
+import parser.EnsemblParser;
+import parser.GoParser;
+import parser.OboParser;
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
@@ -21,19 +26,27 @@ public class Main {
         try {
             Namespace res = parser.parseArgs(args);
             var oboParser = new OboParser();
+            int minSize = res.get("minsize");
+            int maxSize = res.get("maxsize");
+            String outputPath = res.get("o");
             var start = System.currentTimeMillis();
             var wholeStart = start;
-            logger.info("Starting to parse Obo File");
-            oboParser.parse(res.get("obo"), res.get("root"));
+            logger.info("Starting to parse mapping File");
+            var mapping = EnsemblParser.parse(res.get("mapping"));
             logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
+            start = System.currentTimeMillis();
+            var enrich = EnrichParser.parse(res.get("enrich"));
+            logger.info(String.format("Time needed for Enrich parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             logger.info("Starting to parse Obo File");
             start = System.currentTimeMillis();
-            var go = GoParser.parse(res.get("mapping"));
+            var obos = oboParser.parse(res.get("obo"), res.get("root"), mapping, enrich);
             logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
+
+            Analyse.compute(obos, mapping, enrich, minSize, maxSize, outputPath);
             logger.info(String.format("Time needed for whole program: %s seconds", (System.currentTimeMillis() - wholeStart) / 1000.0));
-        } //catch(ArgumentParserException e){
-          //  parser.printHelp();
-        //}
+        } catch(ArgumentParserException e){
+            parser.printHelp();
+        }
         catch (Exception e) {
             logger.error("Error while executing main", e);
         }
