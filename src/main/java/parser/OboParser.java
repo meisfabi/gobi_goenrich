@@ -17,11 +17,15 @@ public class OboParser {
     public static Map<String, Set<String>> mapping;
     private static final Map<String, Obo> obos = new HashMap<>();
     private static Map<String, Enrich> enrichMap = new HashMap<>();
+    private static Set<String> overallGenes = new HashSet<>();
+    private static Set<String> signOverallGenes = new HashSet<>();
 
-    public Map<String, Obo> parse(String inputPath, String r, Map<String, Set<String>> m, Map<String, Enrich> en) {
+    public Map<String, Obo> parse(String inputPath, String r, Map<String, Set<String>> m, Map<String, Enrich> en, Set<String> oaGenes, Set<String> sOaGenes) {
         root = r;
         mapping = m;
         enrichMap = en;
+        overallGenes = oaGenes;
+        signOverallGenes = sOaGenes;
         Go2GenesMapping();
         int errorLines = 0;
         logger.info("Starting to parse gtf file");
@@ -79,8 +83,12 @@ public class OboParser {
 
             if(genes != null){
                 for(var gene : genes){
-                    if(enrichMap.get(gene) != null){
+                    var enrich = enrichMap.get(gene);
+                    if(enrich != null){
                         currentObo.getAssociatedGenes().add(gene);
+                        overallGenes.add(gene);
+                        if(enrich.isSignIf())
+                            signOverallGenes.add(gene);
                     } else{
                         currentObo.getNotEnrichedGenes().add(gene);
                     }

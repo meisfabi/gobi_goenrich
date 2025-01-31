@@ -20,7 +20,7 @@ public class EnrichParser {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("#")){
-                    significantIds.add(line.substring(1, line.length() - 1));
+                    significantIds.add(line.substring(1));
                     continue;
                 }
 

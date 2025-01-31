@@ -9,6 +9,8 @@ import parser.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
@@ -31,8 +33,14 @@ public class Main {
             String outputPath = res.get("o");
             var start = System.currentTimeMillis();
             var wholeStart = start;
+            Map<String, Set<String>> mapping;
             logger.info("Starting to parse mapping File");
-            var mapping = EnsemblParser.parse(res.get("mapping"));
+            if(res.get("mappingtype").equals("ensembl")){
+                mapping = EnsemblParser.parse(res.get("mapping"));
+            } else{
+                mapping = GoParser.parse(res.get("mapping"));
+            }
+
             logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             start = System.currentTimeMillis();
             var groundTruth = new HashSet<String>();
@@ -40,11 +48,13 @@ public class Main {
             logger.info(String.format("Time needed for Enrich parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             logger.info("Starting to parse Obo File");
             start = System.currentTimeMillis();
-            var obos = oboParser.parse(res.get("obo"), res.get("root"), mapping, enrich);
+            var signOverAllGenes = new HashSet<String>();
+            var overAllGenes = new HashSet<String>();
+            var obos = oboParser.parse(res.get("obo"), res.get("root"), mapping, enrich, overAllGenes, signOverAllGenes);
             logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
-            var yur = TestParser.parse("C:\\Users\\mathi\\Desktop\\gobi_projects\\goenrich\\src\\main\\input\\simul_exp_go_bp_ensembl_min50_max500.enrich.out");
+            //var yur = TestParser.parse("C:\\Users\\mathi\\Desktop\\gobi_projects\\goenrich\\src\\main\\input\\simul_exp_go_bp_ensembl_min50_max500.enrich.out");
 
-            Analyse.compute(obos, mapping, enrich, minSize, maxSize, outputPath, groundTruth, yur);
+            Analyse.compute(obos, mapping, enrich, minSize, maxSize, outputPath, groundTruth, overAllGenes, signOverAllGenes);
             logger.info(String.format("Time needed for whole program: %s seconds", (System.currentTimeMillis() - wholeStart) / 1000.0));
         } catch(ArgumentParserException e){
             parser.printHelp();

@@ -6,11 +6,17 @@ public class Obo {
     private String id;
     private String name;
     private String namespace;
+    private double hgPval;
+    private double hgFdr;
+    private double fejPval;
+    private double fejFdr;
     private boolean isGroundTruth = false;
     private Set<String> isA = new HashSet<>();
     private final Set<String> children = new HashSet<>();
     private final Set<String> associatedGenes = new HashSet<>();
     private final Set<String> notEnrichedGenes = new HashSet<>();
+    private final Set<String> overlappingGenes = new HashSet<>();
+    private int size;
 
     public Obo(){
 
@@ -62,6 +68,9 @@ public class Obo {
     public Set<String> getNotEnrichedGenes() {
         return notEnrichedGenes;
     }
+    public Set<String> getOverlappingGenes() {
+        return overlappingGenes;
+    }
 
     public void setGroundTruth(boolean groundTruth) {
         isGroundTruth = groundTruth;
@@ -69,5 +78,45 @@ public class Obo {
 
     public boolean isGroundTruth() {
         return isGroundTruth;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public double getHgPval() {
+        return hgPval;
+    }
+
+    public void setHgPval(double hgPval) {
+        this.hgPval = hgPval;
+    }
+
+    public void setHgFdr(double hgFdr) {
+        this.hgFdr = hgFdr;
+    }
+
+    public double getHgFdr() {
+        return hgFdr;
+    }
+
+    public double getFejPval() {
+        return fejPval;
+    }
+
+    public void setFejPval(double fejPval) {
+        this.fejPval = fejPval;
+    }
+
+    public double getFejFdr() {
+        return fejFdr;
+    }
+
+    public void setFejFdr(double fejFdr) {
+        this.fejFdr = fejFdr;
     }
 }
