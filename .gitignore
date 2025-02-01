@@ -36,6 +36,8 @@ build/
 
 ### Mac OS ###
 .DS_Store
-
+logs
 input
 /src/main/output/
+/logs/
+../logs/

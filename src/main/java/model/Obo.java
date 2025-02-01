@@ -10,6 +10,9 @@ public class Obo {
     private double hgFdr;
     private double fejPval;
     private double fejFdr;
+    private double ksStat;
+    private double ksPval;
+    private double ksFdr;
     private boolean isGroundTruth = false;
     private Set<String> isA = new HashSet<>();
     private final Set<String> children = new HashSet<>();
@@ -118,5 +121,29 @@ public class Obo {
 
     public void setFejFdr(double fejFdr) {
         this.fejFdr = fejFdr;
+    }
+
+    public double getKsPval() {
+        return ksPval;
+    }
+
+    public double getKsFdr() {
+        return ksFdr;
+    }
+
+    public double getKsStat() {
+        return ksStat;
+    }
+
+    public void setKsFdr(double ksFdr) {
+        this.ksFdr = ksFdr;
+    }
+
+    public void setKsPval(double ksPval) {
+        this.ksPval = ksPval;
+    }
+
+    public void setKsStat(double ksStat) {
+        this.ksStat = ksStat;
     }
 }
