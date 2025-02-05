@@ -31,6 +31,7 @@ public class Main {
             int minSize = res.get("minsize");
             int maxSize = res.get("maxsize");
             String outputPath = res.get("o");
+            String outputOverlapPath = res.get("overlapout");
             var start = System.currentTimeMillis();
             var wholeStart = start;
             Map<String, Set<String>> mapping;
@@ -53,8 +54,7 @@ public class Main {
             var obos = oboParser.parse(res.get("obo"), res.get("root"), mapping, enrich, overAllGenes, signOverAllGenes);
             logger.info(String.format("Time needed for Obo parsing: %s seconds", (System.currentTimeMillis() - start) / 1000.0));
             //var yur = TestParser.parse("C:\\Users\\mathi\\Desktop\\gobi_projects\\goenrich\\src\\main\\input\\simul_exp_go_bp_ensembl_min50_max500.enrich.out");
-
-            Analyse.compute(obos, mapping, enrich, minSize, maxSize, outputPath, groundTruth, overAllGenes, signOverAllGenes);
+            Analyse.compute(obos, mapping, enrich, minSize, maxSize, outputPath, outputOverlapPath, groundTruth, overAllGenes, signOverAllGenes);
             logger.info(String.format("Time needed for whole program: %s seconds", (System.currentTimeMillis() - wholeStart) / 1000.0));
         } catch(ArgumentParserException e){
             parser.printHelp();

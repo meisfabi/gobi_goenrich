@@ -19,6 +19,8 @@ public class OboParser {
     private static Map<String, Enrich> enrichMap = new HashMap<>();
     private static Set<String> overallGenes = new HashSet<>();
     private static Set<String> signOverallGenes = new HashSet<>();
+    private static final Map<String, Set<String>> Go2Genes = new HashMap<>();
+
 
     public Map<String, Obo> parse(String inputPath, String r, Map<String, Set<String>> m, Map<String, Enrich> en, Set<String> oaGenes, Set<String> sOaGenes) {
         root = r;
@@ -45,8 +47,8 @@ public class OboParser {
 
         addChildren();
         topologicalDfsSort();
+        computeAncestors();
         addGenes();
-
         return obos;
     }
 
@@ -148,7 +150,6 @@ public class OboParser {
         }
     }
 
-    private static final Map<String, Set<String>> Go2Genes = new HashMap<>();
     private static void Go2GenesMapping(){
         for(var geneEntry : mapping.entrySet()){
             var geneId = geneEntry.getKey();
@@ -189,11 +190,10 @@ public class OboParser {
                 }
             }
         }
-
-        Collections.reverse(sorted);
     }
 
     private static void addGenes(){
+        Collections.reverse(sorted);
         for (var child : sorted) {
             var childGenes = child.getAssociatedGenes();
             var childNotOverlappingGenes = child.getNotEnrichedGenes();
@@ -204,6 +204,20 @@ public class OboParser {
                     parent.getNotEnrichedGenes().addAll(childNotOverlappingGenes);
                 }
             }
+        }
+    }
+
+    private static void computeAncestors() {
+        for (var node : sorted) {
+            var ancestors = new HashSet<String>();
+            for (var parentId : node.getIsA()) {
+                ancestors.add(parentId);
+                var parent = obos.get(parentId);
+                if (parent != null && parent.getAllAncestors() != null) {
+                    ancestors.addAll(parent.getAllAncestors());
+                }
+            }
+            node.setAllAncestors(ancestors);
         }
     }
 

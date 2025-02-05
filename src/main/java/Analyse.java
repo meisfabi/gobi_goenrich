@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -15,7 +16,7 @@ public class Analyse {
 
     private final static Logger logger = LoggerFactory.getLogger(Analyse.class);
 
-    public static void compute(Map<String, Obo> obos, Map<String, Set<String>> mapping, Map<String, Enrich> enrichSet, int minSize, int maxSize, String output, HashSet<String> groundTruth, Set<String> overallGenes, Set<String> signOverallGenes) {
+    public static void compute(Map<String, Obo> obos, Map<String, Set<String>> mapping, Map<String, Enrich> enrichSet, int minSize, int maxSize, String output, String outputOverlap, HashSet<String> groundTruth, Set<String> overallGenes, Set<String> signOverallGenes) {
         for (var goId : groundTruth) {
             var obo = obos.get(goId);
             if (obo == null)
@@ -24,9 +25,10 @@ public class Analyse {
             obo.setGroundTruth(true);
         }
         var validObos = computeSize(mapping, enrichSet, obos, minSize, maxSize);
-        hyperGeom(obos, validObos, overallGenes, signOverallGenes, enrichSet);
+        calculateStats(obos, validObos, overallGenes, signOverallGenes, enrichSet);
         getShortestPath(obos, groundTruth, validObos);
         print(obos, validObos, output, groundTruth);
+        calculateOverlap(obos, validObos, outputOverlap);
     }
 
     private static Set<String> computeSize(Map<String, Set<String>> mapping, Map<String, Enrich> enrichSet, Map<String, Obo> obos, int minSize, int maxSize) {
@@ -55,10 +57,12 @@ public class Analyse {
         return overlapping;
     }
 
-    private record GoResult(String goId, double hgPval, double fejPval, double ksPval) {}
-    private static void hyperGeom(Map<String, Obo> obos, Set<String> overlapping,
-                                  Set<String> overallGenes, Set<String> signOverallGenes,
-                                  Map<String, Enrich> enrichSet) {
+    private record GoResult(String goId, double hgPval, double fejPval, double ksPval) {
+    }
+
+    private static void calculateStats(Map<String, Obo> obos, Set<String> overlapping,
+                                       Set<String> overallGenes, Set<String> signOverallGenes,
+                                       Map<String, Enrich> enrichSet) {
         var N = overallGenes.size();
         var K = signOverallGenes.size();
 
@@ -164,10 +168,10 @@ public class Analyse {
 
 
     private static void getShortestPath(Map<String, Obo> obos, Set<String> groundTruth, Set<String> validObos) {
-            validObos.parallelStream().forEach(goId -> {//for (var goId : validObos) {
+        validObos.parallelStream().forEach(goId -> {//for (var goId : validObos) {
             if (!groundTruth.contains(goId)) {
                 var result = findShortestPathWithUpward(goId, obos, groundTruth);
-                if(result== null)
+                if (result == null)
                     return;
                 var path = result.path;
                 var lca = result.lca;
@@ -188,11 +192,13 @@ public class Analyse {
         });
     }
 
-    record shortestPathResult(List<String> path, String lca){}
+    record shortestPathResult(List<String> path, String lca) {
+    }
+
     private static shortestPathResult findShortestPathWithUpward(String startId,
-                                                           Map<String, Obo> obos,
-                                                           Set<String> groundTruth) {
-         class State {
+                                                                 Map<String, Obo> obos,
+                                                                 Set<String> groundTruth) {
+        class State {
             final String node;
             final boolean hasMovedUp;
             final List<String> path;
@@ -253,6 +259,46 @@ public class Analyse {
         }
         return null;
     }
+
+    private static void calculateOverlap(Map<String, Obo> obos, Set<String> validObos, String outputPath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
+            writer.write("term1\tterm2\tis_relative\tpath_length\tnum_overlapping\tmax_ov_percent\n");
+            var validList = new ArrayList<>(validObos);
+
+            for (int i = 0; i < validList.size(); i++) {
+                var termId1 = validList.get(i);
+                var term1 = obos.get(termId1);
+                for (int j = i + 1; j < validList.size(); j++) {
+                    var termId2 = validList.get(j);
+                    var term2 = obos.get(termId2);
+
+                    var genes1 = term1.getAssociatedGenes();
+                    var genes2 = term2.getAssociatedGenes();
+
+                    int numOverlapping = 0;
+                    var smallerGeneSet = genes1.size() <= genes2.size() ? genes1 : genes2;
+                    var biggerGeneSet = genes1.size() > genes2.size() ? genes1 : genes2;
+                    for (var gene : smallerGeneSet) {
+                        if (biggerGeneSet.contains(gene)) {
+                            numOverlapping++;
+                        }
+                    }
+
+                    var divisor = Math.min(genes1.size(), genes2.size());
+                    var maxOvPercent = (divisor == 0 ? 0 : (numOverlapping / (double) divisor) * 100);
+
+                    var isRelative = term1.getAllAncestors().contains(termId2) || term2.getAllAncestors().contains(termId1);
+                    writer.write(termId1 +"\t" + termId2 + "\t"+ isRelative +"\t" + 0 + "\t" + numOverlapping + "\t" + maxOvPercent + "\n");
+
+                }
+            }
+        } catch (IOException e) {
+            logger.error("Fehler beim Schreiben der overlap_out_tsv Datei", e);
+        }
+
+    }
+
+
     private static void print(Map<String, Obo> obos, Set<String> overlapping, String outputPath, Set<String> groundTruth) {
         try (var writer = new BufferedWriter(new FileWriter(outputPath))) {
             writer.write("term\tname\tsize\tis_true\tnoverlap\thg_pval\thg_fdr\tfej_pval\tfej_fdr\tks_stat\tks_pval\tks_fdr\tshortest_path_to_a_true\n");
@@ -270,7 +316,7 @@ public class Analyse {
                 var ksPval = String.format(Locale.US, "%.5e", obo.getKsPval());
                 var ksFdr = String.format(Locale.US, "%.5e", obo.getKsFdr());
                 var shortestPath = obo.getShortestPath();
-                writer.write(goId + "\t" + name + "\t" + size + "\t" + isTrue + "\t" + nOverlap + "\t" + hgPval + "\t" + hgFdr + "\t" + fishersPval + "\t" + fishersFDR + "\t" + ksStat + "\t" + ksPval + "\t" + ksFdr + "\t"+ shortestPath + "\n");
+                writer.write(goId + "\t" + name + "\t" + size + "\t" + isTrue + "\t" + nOverlap + "\t" + hgPval + "\t" + hgFdr + "\t" + fishersPval + "\t" + fishersFDR + "\t" + ksStat + "\t" + ksPval + "\t" + ksFdr + "\t" + shortestPath + "\n");
             }
         } catch (Exception e) {
             logger.error("Error while writing to file", e);

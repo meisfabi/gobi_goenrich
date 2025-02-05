@@ -16,6 +16,7 @@ public class Obo {
     private double ksFdr;
     private boolean isGroundTruth = false;
     private Set<String> isA = new HashSet<>();
+    private Set<String> allAncestors = new HashSet<>();
     private final Set<String> children = new HashSet<>();
     private final Set<String> associatedGenes = new HashSet<>();
     private final Set<String> notEnrichedGenes = new HashSet<>();
@@ -154,5 +155,13 @@ public class Obo {
 
     public void setShortestPath(String shortestPath) {
         this.shortestPath = shortestPath;
+    }
+
+    public Set<String> getAllAncestors() {
+        return allAncestors;
+    }
+
+    public void setAllAncestors(Set<String> allAncestors) {
+        this.allAncestors = allAncestors;
     }
 }
