@@ -6,6 +6,7 @@ public class Obo {
     private String id;
     private String name;
     private String namespace;
+    private String shortestPath = "";
     private double hgPval;
     private double hgFdr;
     private double fejPval;
@@ -145,5 +146,13 @@ public class Obo {
 
     public void setKsStat(double ksStat) {
         this.ksStat = ksStat;
+    }
+
+    public String getShortestPath() {
+        return shortestPath;
+    }
+
+    public void setShortestPath(String shortestPath) {
+        this.shortestPath = shortestPath;
     }
 }

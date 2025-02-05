@@ -46,6 +46,7 @@ public class OboParser {
         addChildren();
         topologicalDfsSort();
         addGenes();
+
         return obos;
     }
 
@@ -93,8 +94,9 @@ public class OboParser {
                         currentObo.getNotEnrichedGenes().add(gene);
                     }
                 }
-            }
 
+
+            }
             obos.put(currentObo.getId(), currentObo);
             currentObo = null;
             return;
@@ -146,7 +148,7 @@ public class OboParser {
         }
     }
 
-    private static Map<String, Set<String>> Go2Genes = new HashMap<>();
+    private static final Map<String, Set<String>> Go2Genes = new HashMap<>();
     private static void Go2GenesMapping(){
         for(var geneEntry : mapping.entrySet()){
             var geneId = geneEntry.getKey();
@@ -163,7 +165,10 @@ public class OboParser {
     static Set<String> visited = new HashSet<>();
 
     private static void dfs(Obo obo){
+        if(obo == null)
+            return;
         var goId = obo.getId();
+
         visited.add(goId);
         for(var parentId : obo.getIsA()){
 
@@ -179,7 +184,9 @@ public class OboParser {
         for(var obo : obos.entrySet()){
             var goId = obo.getKey();
             if(!visited.contains(goId)){
-                dfs(obo.getValue());
+                if(obo.getValue() != null){
+                    dfs(obo.getValue());
+                }
             }
         }
 
