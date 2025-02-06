@@ -1,271 +1,37 @@
-2025-02-05 15:00:04 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:00:04 [main] INFO  Main - Time needed for Obo parsing: 0.367 seconds
-2025-02-05 15:00:04 [main] INFO  Main - Time needed for Enrich parsing: 0.072 seconds
-2025-02-05 15:00:04 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:00:04 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:00:06 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:00:06 [main] INFO  Main - Time needed for Obo parsing: 1.914 seconds
-2025-02-05 15:01:46 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:01:47 [main] INFO  Main - Time needed for Obo parsing: 0.266 seconds
-2025-02-05 15:01:47 [main] INFO  Main - Time needed for Enrich parsing: 0.094 seconds
-2025-02-05 15:01:47 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:01:47 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:01:49 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:01:49 [main] INFO  Main - Time needed for Obo parsing: 2.692 seconds
-2025-02-05 15:01:52 [main] INFO  Main - Time needed for whole program: 5.329 seconds
-2025-02-05 15:03:48 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:03:49 [main] INFO  Main - Time needed for Obo parsing: 0.288 seconds
-2025-02-05 15:03:49 [main] INFO  Main - Time needed for Enrich parsing: 0.083 seconds
-2025-02-05 15:03:49 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:03:49 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:03:50 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:03:51 [main] INFO  Main - Time needed for Obo parsing: 2.133 seconds
-2025-02-05 15:03:53 [main] INFO  Main - Time needed for whole program: 4.804 seconds
-2025-02-05 15:04:32 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:04:32 [main] INFO  Main - Time needed for Obo parsing: 0.299 seconds
-2025-02-05 15:04:33 [main] INFO  Main - Time needed for Enrich parsing: 0.081 seconds
-2025-02-05 15:04:33 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:04:33 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:04:34 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:04:35 [main] INFO  Main - Time needed for Obo parsing: 2.199 seconds
-2025-02-05 15:05:12 [main] INFO  Main - Time needed for whole program: 39.834 seconds
-2025-02-05 15:05:31 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:05:31 [main] INFO  Main - Time needed for Obo parsing: 0.283 seconds
-2025-02-05 15:05:31 [main] INFO  Main - Time needed for Enrich parsing: 0.112 seconds
-2025-02-05 15:05:31 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:05:32 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:05:33 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:05:34 [main] INFO  Main - Time needed for Obo parsing: 2.29 seconds
-2025-02-05 15:06:39 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:06:39 [main] INFO  Main - Time needed for Obo parsing: 0.351 seconds
-2025-02-05 15:06:39 [main] INFO  Main - Time needed for Enrich parsing: 0.073 seconds
-2025-02-05 15:06:39 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:06:40 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:06:41 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:06:41 [main] INFO  Main - Time needed for Obo parsing: 1.93 seconds
-2025-02-05 15:08:14 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:08:15 [main] INFO  Main - Time needed for Obo parsing: 0.355 seconds
-2025-02-05 15:08:15 [main] INFO  Main - Time needed for Enrich parsing: 0.091 seconds
-2025-02-05 15:08:15 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:08:15 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:08:17 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:08:17 [main] INFO  Main - Time needed for Obo parsing: 2.199 seconds
-2025-02-05 15:09:32 [main] INFO  Main - Time needed for whole program: 77.535 seconds
-2025-02-05 15:13:09 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:13:09 [main] INFO  Main - Time needed for Obo parsing: 0.298 seconds
-2025-02-05 15:13:09 [main] INFO  Main - Time needed for Enrich parsing: 0.091 seconds
-2025-02-05 15:13:09 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:13:09 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:13:11 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:13:11 [main] INFO  Main - Time needed for Obo parsing: 1.843 seconds
-2025-02-05 15:14:07 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:14:07 [main] INFO  Main - Time needed for Obo parsing: 0.27 seconds
-2025-02-05 15:14:07 [main] INFO  Main - Time needed for Enrich parsing: 0.088 seconds
-2025-02-05 15:14:07 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:14:07 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:14:09 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:14:09 [main] INFO  Main - Time needed for Obo parsing: 1.96 seconds
-2025-02-05 15:14:29 [main] INFO  Main - Time needed for whole program: 21.747 seconds
-2025-02-05 15:17:42 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:17:42 [main] INFO  Main - Time needed for Obo parsing: 0.303 seconds
-2025-02-05 15:17:42 [main] INFO  Main - Time needed for Enrich parsing: 0.106 seconds
-2025-02-05 15:17:42 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:17:43 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:17:44 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:17:44 [main] INFO  Main - Time needed for Obo parsing: 1.844 seconds
-2025-02-05 15:17:46 [main] INFO  Main - Time needed for whole program: 4.411 seconds
-2025-02-05 15:18:39 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:18:39 [main] INFO  Main - Time needed for Obo parsing: 0.26 seconds
-2025-02-05 15:18:39 [main] INFO  Main - Time needed for Enrich parsing: 0.091 seconds
-2025-02-05 15:18:39 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:18:39 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:18:41 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:18:41 [main] INFO  Main - Time needed for Obo parsing: 1.893 seconds
-2025-02-05 15:18:44 [main] INFO  Main - Time needed for whole program: 4.751 seconds
-2025-02-05 15:21:28 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:21:28 [main] INFO  Main - Time needed for Obo parsing: 0.294 seconds
-2025-02-05 15:21:28 [main] INFO  Main - Time needed for Enrich parsing: 0.099 seconds
-2025-02-05 15:21:28 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:21:28 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:21:30 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:21:30 [main] INFO  Main - Time needed for Obo parsing: 1.918 seconds
-2025-02-05 15:24:29 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:24:29 [main] INFO  Main - Time needed for Obo parsing: 0.318 seconds
-2025-02-05 15:24:29 [main] INFO  Main - Time needed for Enrich parsing: 0.069 seconds
-2025-02-05 15:24:29 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:24:29 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:24:31 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:24:31 [main] INFO  Main - Time needed for Obo parsing: 1.606 seconds
-2025-02-05 15:24:44 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:24:44 [main] INFO  Main - Time needed for Obo parsing: 0.28 seconds
-2025-02-05 15:24:44 [main] INFO  Main - Time needed for Enrich parsing: 0.083 seconds
-2025-02-05 15:24:44 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:24:44 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:24:46 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:24:46 [main] INFO  Main - Time needed for Obo parsing: 1.861 seconds
-2025-02-05 15:26:29 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:26:29 [main] INFO  Main - Time needed for Obo parsing: 0.264 seconds
-2025-02-05 15:26:29 [main] INFO  Main - Time needed for Enrich parsing: 0.075 seconds
-2025-02-05 15:26:29 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:26:29 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:26:31 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:26:31 [main] INFO  Main - Time needed for Obo parsing: 1.963 seconds
-2025-02-05 15:26:33 [main] INFO  Main - Time needed for whole program: 4.494 seconds
-2025-02-05 15:27:57 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:27:57 [main] INFO  Main - Time needed for Obo parsing: 0.272 seconds
-2025-02-05 15:27:57 [main] INFO  Main - Time needed for Enrich parsing: 0.096 seconds
-2025-02-05 15:27:57 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:27:57 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:27:59 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:27:59 [main] INFO  Main - Time needed for Obo parsing: 2.042 seconds
-2025-02-05 15:28:13 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:28:13 [main] INFO  Main - Time needed for Obo parsing: 0.344 seconds
-2025-02-05 15:28:13 [main] INFO  Main - Time needed for Enrich parsing: 0.079 seconds
-2025-02-05 15:28:13 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:28:13 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:28:15 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:28:15 [main] INFO  Main - Time needed for Obo parsing: 1.925 seconds
-2025-02-05 15:30:20 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:30:20 [main] INFO  Main - Time needed for Obo parsing: 0.269 seconds
-2025-02-05 15:30:20 [main] INFO  Main - Time needed for Enrich parsing: 0.086 seconds
-2025-02-05 15:30:20 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:30:20 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:30:21 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:30:22 [main] INFO  Main - Time needed for Obo parsing: 1.793 seconds
-2025-02-05 15:30:24 [main] INFO  Main - Time needed for whole program: 4.314 seconds
-2025-02-05 15:32:59 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:32:59 [main] INFO  Main - Time needed for Obo parsing: 0.281 seconds
-2025-02-05 15:32:59 [main] INFO  Main - Time needed for Enrich parsing: 0.083 seconds
-2025-02-05 15:32:59 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:32:59 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:33:01 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:33:01 [main] INFO  Main - Time needed for Obo parsing: 2.197 seconds
-2025-02-05 15:33:04 [main] INFO  Main - Time needed for whole program: 5.285 seconds
-2025-02-05 15:36:44 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:36:45 [main] INFO  Main - Time needed for Obo parsing: 0.26 seconds
-2025-02-05 15:36:45 [main] INFO  Main - Time needed for Enrich parsing: 0.078 seconds
-2025-02-05 15:36:45 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:36:45 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:36:46 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:36:46 [main] INFO  Main - Time needed for Obo parsing: 1.664 seconds
-2025-02-05 15:36:50 [main] INFO  Main - Time needed for whole program: 5.369 seconds
-2025-02-05 15:39:14 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:39:14 [main] INFO  Main - Time needed for Obo parsing: 0.287 seconds
-2025-02-05 15:39:14 [main] INFO  Main - Time needed for Enrich parsing: 0.082 seconds
-2025-02-05 15:39:14 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:39:14 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:39:16 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:39:16 [main] INFO  Main - Time needed for Obo parsing: 1.855 seconds
-2025-02-05 15:39:18 [main] INFO  Main - Time needed for whole program: 4.295 seconds
-2025-02-05 15:44:20 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:44:21 [main] INFO  Main - Time needed for Obo parsing: 0.239 seconds
-2025-02-05 15:44:21 [main] INFO  Main - Time needed for Enrich parsing: 0.1 seconds
-2025-02-05 15:44:21 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:44:21 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:44:22 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:44:22 [main] INFO  Main - Time needed for Obo parsing: 1.665 seconds
-2025-02-05 15:44:25 [main] INFO  Main - Time needed for whole program: 4.19 seconds
-2025-02-05 15:48:19 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 15:48:20 [main] INFO  Main - Time needed for Obo parsing: 0.37 seconds
-2025-02-05 15:48:20 [main] INFO  Main - Time needed for Enrich parsing: 0.07 seconds
-2025-02-05 15:48:20 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 15:48:20 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 15:48:21 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 15:48:22 [main] INFO  Main - Time needed for Obo parsing: 2.076 seconds
-2025-02-05 16:00:21 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:00:21 [main] INFO  Main - Time needed for Obo parsing: 0.264 seconds
-2025-02-05 16:00:21 [main] INFO  Main - Time needed for Enrich parsing: 0.1 seconds
-2025-02-05 16:00:21 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:00:22 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:00:23 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:00:23 [main] INFO  Main - Time needed for Obo parsing: 1.755 seconds
-2025-02-05 16:00:26 [main] INFO  Main - Time needed for whole program: 4.642 seconds
-2025-02-05 16:02:31 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:02:31 [main] INFO  Main - Time needed for Obo parsing: 0.257 seconds
-2025-02-05 16:02:31 [main] INFO  Main - Time needed for Enrich parsing: 0.085 seconds
-2025-02-05 16:02:31 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:02:31 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:02:33 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:02:33 [main] INFO  Main - Time needed for Obo parsing: 1.672 seconds
-2025-02-05 16:02:41 [main] INFO  Main - Time needed for whole program: 10.556 seconds
-2025-02-05 16:03:45 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:03:45 [main] INFO  Main - Time needed for Obo parsing: 0.272 seconds
-2025-02-05 16:03:45 [main] INFO  Main - Time needed for Enrich parsing: 0.112 seconds
-2025-02-05 16:03:45 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:03:45 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:03:47 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:03:47 [main] INFO  Main - Time needed for Obo parsing: 1.767 seconds
-2025-02-05 16:03:50 [main] INFO  Main - Time needed for whole program: 4.823 seconds
-2025-02-05 16:10:16 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:10:16 [main] INFO  Main - Time needed for Obo parsing: 0.272 seconds
-2025-02-05 16:10:16 [main] INFO  Main - Time needed for Enrich parsing: 0.087 seconds
-2025-02-05 16:10:16 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:10:16 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:10:18 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:10:18 [main] INFO  Main - Time needed for Obo parsing: 2.146 seconds
-2025-02-05 16:10:21 [main] INFO  Main - Time needed for whole program: 5.513 seconds
-2025-02-05 16:11:15 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:11:15 [main] INFO  Main - Time needed for Obo parsing: 0.316 seconds
-2025-02-05 16:11:15 [main] INFO  Main - Time needed for Enrich parsing: 0.092 seconds
-2025-02-05 16:11:15 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:11:15 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:11:17 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:11:17 [main] INFO  Main - Time needed for Obo parsing: 2.09 seconds
-2025-02-05 16:12:16 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:12:16 [main] INFO  Main - Time needed for Obo parsing: 0.321 seconds
-2025-02-05 16:12:17 [main] INFO  Main - Time needed for Enrich parsing: 0.089 seconds
-2025-02-05 16:12:17 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:12:17 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:12:18 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:12:19 [main] INFO  Main - Time needed for Obo parsing: 2.274 seconds
-2025-02-05 16:16:11 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:16:11 [main] INFO  Main - Time needed for Obo parsing: 0.277 seconds
-2025-02-05 16:16:11 [main] INFO  Main - Time needed for Enrich parsing: 0.08 seconds
-2025-02-05 16:16:11 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:16:11 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:16:12 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:16:13 [main] INFO  Main - Time needed for Obo parsing: 1.712 seconds
-2025-02-05 16:18:54 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:18:54 [main] INFO  Main - Time needed for Obo parsing: 0.293 seconds
-2025-02-05 16:18:54 [main] INFO  Main - Time needed for Enrich parsing: 0.089 seconds
-2025-02-05 16:18:54 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:18:54 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:18:56 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:18:56 [main] INFO  Main - Time needed for Obo parsing: 1.848 seconds
-2025-02-05 16:19:59 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:20:00 [main] INFO  Main - Time needed for Obo parsing: 0.316 seconds
-2025-02-05 16:20:00 [main] INFO  Main - Time needed for Enrich parsing: 0.067 seconds
-2025-02-05 16:20:00 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:20:00 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:20:01 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:20:02 [main] INFO  Main - Time needed for Obo parsing: 1.896 seconds
-2025-02-05 16:20:42 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:20:42 [main] INFO  Main - Time needed for Obo parsing: 0.308 seconds
-2025-02-05 16:20:42 [main] INFO  Main - Time needed for Enrich parsing: 0.087 seconds
-2025-02-05 16:20:42 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:20:42 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:20:44 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:20:44 [main] INFO  Main - Time needed for Obo parsing: 1.83 seconds
-2025-02-05 16:24:42 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:24:42 [main] INFO  Main - Time needed for Obo parsing: 0.207 seconds
-2025-02-05 16:24:42 [main] INFO  Main - Time needed for Enrich parsing: 0.067 seconds
-2025-02-05 16:24:42 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:24:43 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:24:43 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:24:44 [main] INFO  Main - Time needed for Obo parsing: 1.265 seconds
-2025-02-05 16:26:25 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:26:25 [main] INFO  Main - Time needed for Obo parsing: 0.213 seconds
-2025-02-05 16:26:25 [main] INFO  Main - Time needed for Enrich parsing: 0.068 seconds
-2025-02-05 16:26:25 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:26:25 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:26:26 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:26:27 [main] INFO  Main - Time needed for Obo parsing: 1.363 seconds
-2025-02-05 16:26:30 [main] INFO  Main - Time needed for whole program: 4.763 seconds
-2025-02-05 16:30:15 [main] INFO  Main - Starting to parse mapping File
-2025-02-05 16:30:15 [main] INFO  Main - Time needed for Obo parsing: 0.185 seconds
-2025-02-05 16:30:15 [main] INFO  Main - Time needed for Enrich parsing: 0.054 seconds
-2025-02-05 16:30:15 [main] INFO  Main - Starting to parse Obo File
-2025-02-05 16:30:15 [main] INFO  parser.OboParser - Starting to parse gtf file
-2025-02-05 16:30:16 [main] INFO  parser.OboParser - GTF-File parsed
-2025-02-05 16:30:16 [main] INFO  Main - Time needed for Obo parsing: 1.164 seconds
-2025-02-05 16:30:19 [main] INFO  Main - Time needed for whole program: 4.549 seconds
+2025-02-06 15:00:59 [main] INFO  Main - Starting to parse mapping File
+2025-02-06 15:01:00 [main] INFO  Main - Time needed for Obo parsing: 1.214 seconds
+2025-02-06 15:01:00 [main] INFO  Main - Time needed for Enrich parsing: 0.056 seconds
+2025-02-06 15:01:00 [main] INFO  Main - Starting to parse Obo File
+2025-02-06 15:01:00 [main] INFO  parser.OboParser - Starting to parse gtf file
+2025-02-06 15:01:02 [main] INFO  parser.OboParser - GTF-File parsed
+2025-02-06 15:01:03 [main] INFO  Main - Time needed for Obo parsing: 2.686 seconds
+2025-02-06 15:01:23 [main] INFO  Main - Time needed for whole program: 24.41 seconds
+2025-02-06 15:13:07 [main] INFO  Main - Starting to parse mapping File
+2025-02-06 15:13:08 [main] INFO  Main - Time needed for Obo parsing: 1.262 seconds
+2025-02-06 15:13:08 [main] INFO  Main - Time needed for Enrich parsing: 0.049 seconds
+2025-02-06 15:13:08 [main] INFO  Main - Starting to parse Obo File
+2025-02-06 15:13:09 [main] INFO  parser.OboParser - Starting to parse gtf file
+2025-02-06 15:13:10 [main] INFO  parser.OboParser - GTF-File parsed
+2025-02-06 15:13:11 [main] INFO  Main - Time needed for Obo parsing: 2.181 seconds
+2025-02-06 15:27:24 [main] INFO  Main - Starting to parse mapping File
+2025-02-06 15:27:25 [main] INFO  Main - Time needed for Obo parsing: 1.189 seconds
+2025-02-06 15:27:25 [main] INFO  Main - Time needed for Enrich parsing: 0.053 seconds
+2025-02-06 15:27:25 [main] INFO  Main - Starting to parse Obo File
+2025-02-06 15:27:25 [main] INFO  parser.OboParser - Starting to parse gtf file
+2025-02-06 15:27:27 [main] INFO  parser.OboParser - GTF-File parsed
+2025-02-06 15:27:27 [main] INFO  Main - Time needed for Obo parsing: 1.891 seconds
+2025-02-06 15:28:50 [main] INFO  Main - Starting to parse mapping File
+2025-02-06 15:28:52 [main] INFO  Main - Time needed for Obo parsing: 1.554 seconds
+2025-02-06 15:28:52 [main] INFO  Main - Time needed for Enrich parsing: 0.051 seconds
+2025-02-06 15:28:52 [main] INFO  Main - Starting to parse Obo File
+2025-02-06 15:28:52 [main] INFO  parser.OboParser - Starting to parse gtf file
+2025-02-06 15:28:54 [main] INFO  parser.OboParser - GTF-File parsed
+2025-02-06 15:28:54 [main] INFO  Main - Time needed for Obo parsing: 2.265 seconds
+2025-02-06 15:32:34 [main] INFO  Main - Starting to parse mapping File
+2025-02-06 15:32:43 [main] INFO  Main - Starting to parse mapping File
+2025-02-06 15:32:44 [main] INFO  Main - Time needed for Obo parsing: 1.629 seconds
+2025-02-06 15:32:44 [main] INFO  Main - Time needed for Enrich parsing: 0.098 seconds
+2025-02-06 15:32:44 [main] INFO  Main - Starting to parse Obo File
+2025-02-06 15:32:45 [main] INFO  parser.OboParser - Starting to parse gtf file
+2025-02-06 15:32:46 [main] INFO  parser.OboParser - GTF-File parsed
+2025-02-06 15:32:47 [main] INFO  Main - Time needed for Obo parsing: 2.258 seconds

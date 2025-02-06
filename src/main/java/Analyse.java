@@ -1,5 +1,7 @@
+import model.Direction;
 import model.Enrich;
 import model.Obo;
+import model.State;
 import org.apache.commons.math3.distribution.HypergeometricDistribution;
 import org.apache.commons.math3.stat.inference.KolmogorovSmirnovTest;
 import org.slf4j.Logger;
@@ -9,6 +11,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
@@ -28,7 +32,8 @@ public class Analyse {
         calculateStats(obos, validObos, overallGenes, signOverallGenes, enrichSet);
         getShortestPath(obos, groundTruth, validObos);
         print(obos, validObos, output, groundTruth);
-        calculateOverlap(obos, validObos, outputOverlap);
+        if(outputOverlap != null && !outputOverlap.isEmpty())
+            calculateOverlap(obos, validObos, outputOverlap);
     }
 
     private static Set<String> computeSize(Map<String, Set<String>> mapping, Map<String, Enrich> enrichSet, Map<String, Obo> obos, int minSize, int maxSize) {
@@ -170,7 +175,7 @@ public class Analyse {
     private static void getShortestPath(Map<String, Obo> obos, Set<String> groundTruth, Set<String> validObos) {
         validObos.parallelStream().forEach(goId -> {//for (var goId : validObos) {
             if (!groundTruth.contains(goId)) {
-                var result = findShortestPathWithUpward(goId, obos, groundTruth);
+                var result = findShortestPath(goId, obos, groundTruth);
                 if (result == null)
                     return;
                 var path = result.path;
@@ -195,22 +200,9 @@ public class Analyse {
     record shortestPathResult(List<String> path, String lca) {
     }
 
-    private static shortestPathResult findShortestPathWithUpward(String startId,
-                                                                 Map<String, Obo> obos,
-                                                                 Set<String> groundTruth) {
-        class State {
-            final String node;
-            final boolean hasMovedUp;
-            final List<String> path;
-            final String lcaCandidate;
-
-            State(String node, boolean hasMovedUp, List<String> path, String lcaCandidate) {
-                this.node = node;
-                this.hasMovedUp = hasMovedUp;
-                this.path = path;
-                this.lcaCandidate = lcaCandidate;
-            }
-        }
+    private static shortestPathResult findShortestPath(String startId,
+                                                       Map<String, Obo> obos,
+                                                       Set<String> groundTruth) {
 
         var queue = new LinkedList<State>();
         var visited = new HashSet<String>();
@@ -221,16 +213,16 @@ public class Analyse {
         while (!queue.isEmpty()) {
             var current = queue.poll();
 
-            if (groundTruth.contains(current.node)) {
-                return new shortestPathResult(current.path, current.lcaCandidate);
+            if (groundTruth.contains(current.getNode())) {
+                return new shortestPathResult(current.getPath(), current.getLcaCandidate());
             }
-            var obo = obos.get(current.node);
-            if (!current.hasMovedUp) {
+            var obo = obos.get(current.getNode());
+            if (!current.hasMovedUp()) {
                 for (var parentId : obo.getIsA()) {
                     var key = parentId + "|false";
                     if (!visited.contains(key)) {
                         visited.add(key);
-                        var newPath = new ArrayList<>(current.path);
+                        var newPath = new ArrayList<>(current.getPath());
                         newPath.add(parentId);
                         queue.add(new State(parentId, false, newPath, parentId));
                     }
@@ -239,9 +231,9 @@ public class Analyse {
                     var key = childId + "|true";
                     if (!visited.contains(key)) {
                         visited.add(key);
-                        var newPath = new ArrayList<>(current.path);
+                        var newPath = new ArrayList<>(current.getPath());
                         newPath.add(childId);
-                        var newLca = (current.lcaCandidate == null) ? current.node : current.lcaCandidate;
+                        var newLca = (current.getLcaCandidate() == null) ? current.getNode() : current.getLcaCandidate();
                         queue.add(new State(childId, true, newPath, newLca));
                     }
                 }
@@ -250,9 +242,9 @@ public class Analyse {
                     var key = childrenId + "|true";
                     if (!visited.contains(key)) {
                         visited.add(key);
-                        var newPath = new ArrayList<>(current.path);
+                        var newPath = new ArrayList<>(current.getPath());
                         newPath.add(childrenId);
-                        queue.add(new State(childrenId, true, newPath, current.lcaCandidate));
+                        queue.add(new State(childrenId, true, newPath, current.getLcaCandidate()));
                     }
                 }
             }
@@ -264,7 +256,11 @@ public class Analyse {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
             writer.write("term1\tterm2\tis_relative\tpath_length\tnum_overlapping\tmax_ov_percent\n");
             var validList = new ArrayList<>(validObos);
-
+            var allDistances = new ConcurrentHashMap<String, Map<String, Integer>>();
+            validObos.parallelStream().forEach(termId -> {
+                var dist = computeDistancesWithSingleSwitch(termId, obos);
+                allDistances.put(termId, dist);
+            });
             for (int i = 0; i < validList.size(); i++) {
                 var termId1 = validList.get(i);
                 var term1 = obos.get(termId1);
@@ -284,11 +280,15 @@ public class Analyse {
                         }
                     }
 
+                    if (numOverlapping == 0)
+                        continue;
+
                     var divisor = Math.min(genes1.size(), genes2.size());
                     var maxOvPercent = (divisor == 0 ? 0 : (numOverlapping / (double) divisor) * 100);
 
                     var isRelative = term1.getAllAncestors().contains(termId2) || term2.getAllAncestors().contains(termId1);
-                    writer.write(termId1 +"\t" + termId2 + "\t"+ isRelative +"\t" + 0 + "\t" + numOverlapping + "\t" + maxOvPercent + "\n");
+                    var shortestPath = allDistances.get(termId1).getOrDefault(termId2, -1);
+                    writer.write(termId1 + "\t" + termId2 + "\t" + isRelative + "\t" + shortestPath + "\t" + numOverlapping + "\t" + maxOvPercent + "\n");
 
                 }
             }
@@ -297,6 +297,69 @@ public class Analyse {
         }
 
     }
+
+    private static Map<String, Integer> computeDistancesWithSingleSwitch(
+            String startId,
+            Map<String, Obo> obos
+    ) {
+        record State(String node, boolean hasMovedUp) {}
+
+        var dist = new HashMap<State, Integer>();
+
+        var queue = new ArrayDeque<State>();
+        var visited = new HashSet<State>();
+
+        var start = new State(startId, false);
+        dist.put(start, 0);
+        visited.add(start);
+        queue.add(start);
+
+        while (!queue.isEmpty()) {
+            var current = queue.poll();
+            var currentObo = obos.get(current.node());
+            if (currentObo == null) {
+                continue;
+            }
+            int currentDistance = dist.get(current);
+
+            if (!current.hasMovedUp()) {
+                for (String parent : currentObo.getIsA()) {
+                    var next = new State(parent, false);
+                    if (visited.add(next)) {
+                        dist.put(next, currentDistance + 1);
+                        queue.add(next);
+                    }
+                }
+
+                for (String child : currentObo.getChildren()) {
+                    var next = new State(child, true);
+                    if (visited.add(next)) {
+                        dist.put(next, currentDistance + 1);
+                        queue.add(next);
+                    }
+                }
+
+            } else {
+                for (String child : currentObo.getChildren()) {
+                    var next = new State(child, true);
+                    if (visited.add(next)) {
+                        dist.put(next, currentDistance + 1);
+                        queue.add(next);
+                    }
+                }
+            }
+        }
+
+        var finalDistances = new HashMap<String, Integer>();
+        for (var entry : dist.entrySet()) {
+            var node = entry.getKey().node();
+            var distance = entry.getValue();
+            finalDistances.merge(node, distance, Math::min);
+        }
+
+        return finalDistances;
+    }
+
 
 
     private static void print(Map<String, Obo> obos, Set<String> overlapping, String outputPath, Set<String> groundTruth) {
@@ -322,4 +385,6 @@ public class Analyse {
             logger.error("Error while writing to file", e);
         }
     }
+
+
 }
